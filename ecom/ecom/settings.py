@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'api',
     'api.category',
     'api.product',
+    'api.user',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,10 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+AUTH_USER_MODEL= "user.customuser"
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 
@@ -145,3 +150,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)
